@@ -3,7 +3,7 @@ class Api::DreamsController < ApplicationController
   before_action :authenticate_user, except: [:index]
 
   def index
-    @dreams = Dream.all
+    @dreams = Dream.all.order(:id)
     render 'index.json.jbuilder'    
   end
 
@@ -12,7 +12,8 @@ class Api::DreamsController < ApplicationController
       user_id: current_user.id,
       title: params[:title],
       content: params[:content],
-      image_url: params[:image_url]
+      image_url: params[:image_url],
+      is_public: params[:is_public]
       )
     if @dream.save
       @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
@@ -33,6 +34,7 @@ class Api::DreamsController < ApplicationController
     @dream.title = params[:title] || @dream.title
     @dream.content = params[:content] || @dream.content
     @dream.image_url = params[:image_url] || @dream.image_url
+    @dream.is_public = params[:is_public] || @dream.is_public
     @dream.user_id = current_user.id
     @dream.tags.destroy_all
 
