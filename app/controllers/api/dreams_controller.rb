@@ -3,7 +3,7 @@ class Api::DreamsController < ApplicationController
   before_action :authenticate_user, except: [:index]
 
   def index
-    @dreams = Dream.all.order(:id)
+    @dreams = Dream.all
     render 'index.json.jbuilder'    
   end
 

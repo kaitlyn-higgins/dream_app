@@ -1,7 +1,7 @@
 json.array! @tags.each do |tag|
   if tag.dream.is_public == false
-    tag.dream.user.username = "anonymous"
     json.partial! "tag.json.jbuilder", tag: tag
+    json.username "anonymous"
   #   tag.dream.content
   else
     json.partial! "tag.json.jbuilder", tag: tag
@@ -11,3 +11,4 @@ json.array! @tags.each do |tag|
     end
   end
 end
+    # tag.dream.user.username = "anonymous"
