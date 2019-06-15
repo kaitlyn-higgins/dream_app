@@ -31,14 +31,17 @@ class Api::DreamsController < ApplicationController
 
   def update
     @dream = Dream.find(params[:id])
-    @dream.title = params[:title] || @dream.title
-    @dream.content = params[:content] || @dream.content
-    @dream.image_url = params[:image_url] || @dream.image_url
-    @dream.is_public = params[:is_public] || @dream.is_public
-    @dream.user_id = current_user.id
-    @dream.tags.destroy_all
+    puts @dream.user.id 
+    puts current_user.id
+    if @dream.user.id == current_user.id
 
-    if @dream.save
+      @dream.title = params[:title] || @dream.title
+      @dream.content = params[:content] || @dream.content
+      @dream.image_url = params[:image_url] || @dream.image_url
+      @dream.is_public = params[:is_public] || @dream.is_public
+      @dream.tags.destroy_all
+    end
+    if @dream.save && @dream.user.id == current_user.id
       @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
       @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
       @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])

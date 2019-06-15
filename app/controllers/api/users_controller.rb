@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
     @user.username = params[:username] || @user.username
     @user.zip_code = params[:zip_code] || @user.zip_code
     @user.gender = params[:gender] || @user.gender
-    @user.password = params[:password] || @user.password
+    @user.password = params[:password] || @user.password_digest
     @user.password_confirmation = params[:password_confirmation] || @user.password_confirmation
     
     if @user.save
