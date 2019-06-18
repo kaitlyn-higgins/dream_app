@@ -1,6 +1,6 @@
 class Api::DreamsController < ApplicationController
 
-  before_action :authenticate_user, except: [:index]
+  # before_action :authenticate_user, except: [:index]
 
   def index
     @dreams = Dream.all
@@ -16,9 +16,9 @@ class Api::DreamsController < ApplicationController
       is_public: params[:is_public]
       )
     if @dream.save
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1].downcase)
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2].downcase)
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3].downcase)
       render 'show.json.jbuilder'
     else render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
     end
@@ -42,9 +42,9 @@ class Api::DreamsController < ApplicationController
       @dream.tags.destroy_all
 
       if @dream.save
-        @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1])
-        @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2])
-        @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3])
+        @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1].downcase)
+        @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2].downcase)
+        @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3].downcase)
         if @tag1.save && @tag2.save && @tag3.save
           render 'show.json.jbuilder'
         else 
