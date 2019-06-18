@@ -31,8 +31,8 @@ class Api::DreamsController < ApplicationController
 
   def update
     @dream = Dream.find(params[:id])
-    puts @dream.user.id 
-    puts current_user.id
+    # puts @dream.user.id 
+    # puts current_user.id
     if @dream.user.id == current_user.id
 
       @dream.title = params[:title] || @dream.title
@@ -40,14 +40,19 @@ class Api::DreamsController < ApplicationController
       @dream.image_url = params[:image_url] || @dream.image_url
       @dream.is_public = params[:is_public] || @dream.is_public
       @dream.tags.destroy_all
+
+      if @dream.save
+        @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1])
+        @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2])
+        @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3])
+        if @tag1.save && @tag2.save && @tag3.save
+          render 'show.json.jbuilder'
+        else 
+          render json: {errors: @dream.errors.full_messages}, status: :unprocessable_entity
+        end
+      end
     end
-    if @dream.save && @dream.user.id == current_user.id
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
-      render 'show.json.jbuilder'
-    else render json: {errors: @dream.errors.full_messages}, status: :unprocessable_entity
-    end
+    
 
   end
 
