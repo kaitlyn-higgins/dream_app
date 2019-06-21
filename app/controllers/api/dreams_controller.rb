@@ -16,9 +16,9 @@ class Api::DreamsController < ApplicationController
       is_public: params[:is_public]
       )
     if @dream.save
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1].downcase)
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2].downcase)
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3].downcase)
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
+      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
       render 'show.json.jbuilder'
     else render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
     end
