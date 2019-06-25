@@ -1,6 +1,6 @@
 class Api::DreamsController < ApplicationController
 
-  # before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user, except: [:index]
 
   def index
     @dreams = Dream.all
@@ -16,9 +16,12 @@ class Api::DreamsController < ApplicationController
       is_public: params[:is_public]
       )
     if @dream.save
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
-      @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
+      params[:tag_names].each do |tag|
+        Tag.create(dream_id: @dream.id, name: tag)
+      end
+      # @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
+      # @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
+      # @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
       render 'show.json.jbuilder'
     else render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
     end
