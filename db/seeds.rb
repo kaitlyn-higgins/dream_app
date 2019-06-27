@@ -1,41 +1,185 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: "kaitlyn@yahoo.com", zip_code: 60622, username: "NightOwl", gender: "female")
-User.create(email: "shane@gmail.com", zip_code: 60622, username: "inTheHouse", gender: "male")
-User.create(email: "amanda@yahoo.com", zip_code: 60604, username: "grimMagician", gender: "female")
-User.create(email: "sebastian@yahoo.com", zip_code: 60625, username: "theLegerian", gender: "male")
+User.create!([
+  {email: "amandaduh@gmail.com", zip_code: 60644, username: "grimMagician", gender: "female", password_digest: "$2a$12$22tOV0JEpTNW157wWnAlhe8DVhs8UJhGGVVKHRbiVf2rqkdajQpmi"},
+  {email: "sebastian@yahoo.com", zip_code: 60624, username: "theLegerian", gender: "male", password_digest: "$2a$12$gOVyG5XLwdVTZDhF/N8iSO.rxe6jUGfgsoKvQGc4Gu9.IKjwyFfNW"},
+  {email: "joni@gmail.com", zip_code: 60611, username: "jonisdreams", gender: "female", password_digest: "$2a$12$4imBXEg5Xt3O5poF0DoJf.Ox9HUabkTZkyEZ8kXHGYcrikCgI8C16"},
+  {email: "shane@gmail.com", zip_code: 60178, username: "inTheHouse", gender: "male", password_digest: "$2a$12$y5MD9LDA3//jBlIjfzUO.eoBBPkvfFjKuPk4Bjzv.rUQfZx0t.mIu"},
+  {email: "dani@gmail.com", zip_code: 60178, username: "daniisfine", gender: "female", password_digest: "$2a$12$MNptBsBX.wodCAOQy3IHcOILF2eI4qDBYso76cVbaUvoMnNHivLpu"},
+  {email: "april@gmail.com", zip_code: 89673, username: "aprilsdigginit", gender: "female", password_digest: "$2a$12$iwrfyTr59N1F6UFiium9j.E2yqq8KrrZt40e8B8bDlhZ9j2VhUoeW"},
+  {email: "kyle@gmail.com", zip_code: 87632, username: "kyleYo", gender: "male", password_digest: "$2a$12$0PbZdvebg8F1wS4R88E2hOxVYHXLPd.Xs9h3C2.hx/Fgk28z9WOEO"},
+  {email: "adaline@gmail.com", zip_code: 60427, username: "Adaline", gender: "female", password_digest: "$2a$12$7dpa6m3vz3.1sI/qLuAu0OBaBSN7io6Ns3GPu5JuFCMmZcqn89T6K"},
+  {email: "kaitlyn@yahoo.com", zip_code: 60611, username: "NightOwl", gender: "female", password_digest: "$2a$12$0DDR03/3TIujq4LuUJAbOewmda/y7xCbmERA0LuyOJKMHVwPlO15m"},
+  {email: "janine@gmail.com", zip_code: 86542, username: "janine", gender: "female", password_digest: "$2a$12$WXbkbSq1QDTGmQ.9LRC2uOJyiAg.t.Dg1BpRImwXVkxZb0NN8W1/2"}
+])
 
-Dream.create(user_id: 1, title: "Capture The Flag", content: "I was part of a social experiment where participants were living in forest patches and battling against each other. Wildlife was prevalent, many snakes and spiders everywhere. We were provided a ration of two tacos per day. I managed to get my hands on a couple extra special fish tacos that weren't supposed to be available to us, and got caught with the contraband. At one point I escaped death when our transportation vehicle was upended.", image_url: "https://cdn.imgbin.com/10/14/9/imgbin-island-taco-mexican-cuisine-food-bean-taco-fUSqSLvydjXkVbqeq6yU2Guk8.jpg")
-Dream.create(user_id: 1, title: "Chili", content: "I was making chili at Harry Carays, and I needed to impress someone with it who was coming in - but the chili sucked. It was super flavorless. I was out of time, but I needed to spice it up! I shouted for jalapenos, chopped them up, and stirred them in without cooking the chili more. It didn't improve. I drizzled it with a sour cream mountain hoping the person would assume the chili was good originally, but made bland by all the sour cream.", image_url: "https://img.wonderhowto.com/img/03/28/63593894282173/0/oops-food-too-spicy-heres-fix.w1456.jpg")
-Dream.create(user_id: 2, title: "Bicycles", content: "I was riding my bike to go fetch some churros, when a bunny hopped out in front of my bike. I slammed on the brakes and flew off of the bike, missing the bunny. The bunny's owner ran down the street and thanked me for stopping, apologized that I got grass stains all over my clothes, and offered me free churros for life at his mexican restuarant, which I was on my way to in the first place!", image_url: "https://media1.tenor.com/images/4361f579a306bfd001c12c77cdf5c024/tenor.gif?itemid=10759370")
-Dream.create(user_id: 3, title: "Trampoline Keyboard", content: "I invented a trampoline that had a keyboard attached to it, which would go up and down as I bounced so I could play music while I jumped. It was sweet.", image_url: "https://www.edwinmsarmiento.com/wp-content/uploads/2014/12/dsc_9140-760x503.jpg")
-Dream.create(user_id: 4, title: "Hiking", content: "I was hiking in the appalacian mountains with Burt Reynolds, and there was a man with a taco stand. Perplexed, but excited, I scooped two fish tacos and two al pastor. They were the best tacos I've ever had in my life. Burt had a taco salad instead.", image_url: "https://66.media.tumblr.com/tumblr_ljyyisQQtg1qb40pro1_1280.png")
 
-Tag.create(dream_id: 1, name: "tacos")
-Tag.create(dream_id: 1, name: "contraband")
-Tag.create(dream_id: 1, name: "experiment")
-Tag.create(dream_id: 1, name: "escapingDeath")
-Tag.create(dream_id: 1, name: "forest")
-Tag.create(dream_id: 1, name: "snakes")
-Tag.create(dream_id: 1, name: "spiders")
-Tag.create(dream_id: 2, name: "chili")
-Tag.create(dream_id: 2, name: "jalapenos")
-Tag.create(dream_id: 2, name: "sourCream")
-Tag.create(dream_id: 2, name: "HarryCarays")
-Tag.create(dream_id: 3, name: "bicycle")
-Tag.create(dream_id: 3, name: "bunny")
-Tag.create(dream_id: 3, name: "churros")
-Tag.create(dream_id: 3, name: "free")
-Tag.create(dream_id: 4, name: "trampoline")
-Tag.create(dream_id: 4, name: "keyboard")
-Tag.create(dream_id: 4, name: "invention")
-Tag.create(dream_id: 5, name: "hiking")
-Tag.create(dream_id: 5, name: "tacos")
-Tag.create(dream_id: 5, name: "burtReynolds")
-Tag.create(dream_id: 5, name: "tacoSalad")
-Tag.create(dream_id: 5, name: "surprise")
+Dream.create!([
+  {user_id: 1, title: "Chili", content: "I was making chili at Harry Carays, and I needed to impress someone with it who was coming in - but the chili sucked. It was super flavorless. I was out of time, but I needed to spice it up! I shouted for jalapenos, chopped them up, and stirred them in without cooking the chili more. It didn't improve. I drizzled it with a sour cream mountain hoping the person would assume the chili was good originally, but made bland by all the sour cream.", image_url: "https://img.wonderhowto.com/img/03/28/63593894282173/0/oops-food-too-spicy-heres-fix.w1456.jpg", is_public: true},
+  {user_id: 2, title: "Bicycles", content: "I was riding my bike to go fetch some churros, when a bunny hopped out in front of my bike. I slammed on the brakes and flew off of the bike, missing the bunny. The bunny's owner ran down the street and thanked me for stopping, apologized that I got grass stains all over my clothes, and offered me free churros for life at his mexican restuarant, which I was on my way to in the first place!", image_url: "https://media1.tenor.com/images/4361f579a306bfd001c12c77cdf5c024/tenor.gif?itemid=10759370", is_public: true},
+  {user_id: 1, title: "Capture The Flag", content: "I was part of a social experiment where participants were living in forest patches and battling against each other. Wildlife was prevalent, many snakes and spiders everywhere. We were provided a ration of two tacos per day. I managed to get my hands on a couple extra special fish tacos that weren't supposed to be available to us, and got caught with the contraband. At one point I escaped death when our transportation vehicle was upended.", image_url: "https://cdn.imgbin.com/10/14/9/imgbin-island-taco-mexican-cuisine-food-bean-taco-fUSqSLvydjXkVbqeq6yU2Guk8.jpg", is_public: true},
+  {user_id: 2, title: "Bicycles", content: "I was riding my bike to go fetch some churros, when a bunny hopped out in front of my bike. I slammed on the brakes and flew off of the bike, missing the bunny. The bunny's owner ran down the street and thanked me for stopping, apologized that I got grass stains all over my clothes, and offered me free churros for life at his mexican restuarant, which I was on my way to in the first place!", image_url: "https://media1.tenor.com/images/4361f579a306bfd001c12c77cdf5c024/tenor.gif?itemid=10759370", is_public: true},
+  {user_id: 3, title: "Trampoline Keyboard", content: "I invented a trampoline that had a keyboard attached to it, which would go up and down as I bounced so I could play music while I jumped. It was sweet.", image_url: "https://www.edwinmsarmiento.com/wp-content/uploads/2014/12/dsc_9140-760x503.jpg", is_public: true},
+  {user_id: 2, title: "Pickles", content: "I was surrounded by pickles... And they could talk!", image_url: "https://www.robertjweisberg.com/content/images/2016/04/pickle-on-line-1.jpeg", is_public: true},
+  {user_id: 4, title: "Keys locked in car", content: "My keys locked themselves in my car! My car autolocked when I closed the door with my bag containing my keys inside. I was stuck in Iceland with a dying phone and a lone sandwich to keep me warm.", image_url: "", is_public: false},
+  {user_id: 2, title: "Chili", content: "I was making chili at Harry Carays, and I needed to impress someone with it who was coming in - but the chili sucked. It was super flavorless. I was out of time, but I needed to spice it up! I shouted for jalapenos, chopped them up, and stirred them in without cooking the chili more. It didn't improve. I drizzled it with a sour cream mountain hoping the person would assume the chili was good originally, but made bland by all the sour cream.", image_url: "https://img.wonderhowto.com/img/03/28/63593894282173/0/oops-food-too-spicy-heres-fix.w1456.jpg", is_public: true},
+  {user_id: 4, title: "Hiking, Burt and a Taco Stand", content: "I was hiking in the appalacian mountains with Burt Reynolds, and there was a man with a taco stand. Perplexed, but excited, I scooped two fish tacos and two al pastor. They were the best tacos I've ever had in my life. Burt had a taco salad instead.", image_url: "https://66.media.tumblr.com/tumblr_ljyyisQQtg1qb40pro1_1280.png", is_public: true},
+  {user_id: 2, title: "Rainbows", content: "Rainbows were everywhere. Some were upside down!", image_url: "https://sp-images.summitpost.org/805052.jpg?auto=format&fit=max&ixlib=php-2.1.1&q=35&w=1024&s=34130ea83488a802fc2e2054e5d88abe", is_public: true},
+  {user_id: 2, title: "Capture The Flag", content: "I was part of a social experiment where participants were living in forest patches and battling against each other. Wildlife was prevalent, many snakes and spiders everywhere. We were provided a ration of two tacos per day. I managed to get my hands on a couple extra special fish tacos that weren't supposed to be available to us, and got caught with the contraband. At one point I escaped death when our transportation vehicle was upended.", image_url: "https://cdn.imgbin.com/10/14/9/imgbin-island-taco-mexican-cuisine-food-bean-taco-fUSqSLvydjXkVbqeq6yU2Guk8.jpg", is_public: true},
+  {user_id: 4, title: "Chased by penguins", content: "My friend Antoinette and I were in an ice rink having a jolly old time, and all of  a sudden the lights dimmed and the music got really dark and creepy... Penguins started to waddle onto the rink! I was excited, thinking someone was playing an awesome prank on us or that they were practicing for a show and we were lucky enough to be there to witness. Boy was I wrong. the penguins, while being cute and tiny, were hungry and vicious. They had razor sharp teeth, and they were chasing Antoinette and I around the rink!", image_url: "https://live.staticflickr.com/4092/4847551142_8c932864f4_b.jpg", is_public: false},
+  {user_id: 4, title: "Trampoline Keyboard", content: "I invented a trampoline that had a keyboard attached to it, which would go up and down as I bounced so I could play music while I jumped. It was sweet.", image_url: "https://www.edwinmsarmiento.com/wp-content/uploads/2014/12/dsc_9140-760x503.jpg", is_public: false},
+  {user_id: 2, title: "My son moved to Berlin", content: "Shane and Katie moved to Berlin! I went to visit them a few weeks after they moved and we went sight seeing, and hit the dance floor to boogie!", image_url: "", is_public: nil},
+  {user_id: 4, title: "Hiking", content: "I was hiking in the appalacian mountains with Burt Reynolds, and there was a man with a taco stand. Perplexed, but excited, I scooped two fish tacos and two al pastor. They were the best tacos I've ever had in my life. Burt had a taco salad instead.", image_url: "https://66.media.tumblr.com/tumblr_ljyyisQQtg1qb40pro1_1280.png", is_public: true},
+  {user_id: 3, title: "chased by killer dolphins", content: "i was chased! they lost.", image_url: "https://img.huffingtonpost.com/asset/5d0503742400005117924fdf.jpeg?cache=j9psni4qsj&ops=1910_1000", is_public: nil},
+  {user_id: 4, title: "sailing", content: "I was sailing on a massive lake, filled with neat creatures. Dolphins kept following me, doing tricks and showing off. An owl stayed perched on the mast. His name was Oliver", image_url: "", is_public: nil},
+  {user_id: 3, title: "dolphins", content: "i was chased! they lost.", image_url: "https://img.huffingtonpost.com/asset/5d0503742400005117924fdf.jpeg?cache=j9psni4qsj&ops=1910_1000", is_public: nil},
+  {user_id: 1, title: "Monkey", content: "I dreamed I was a monkey, swinging from the trees!", image_url: "https://i.pinimg.com/originals/f9/24/61/f924613d358446614d352d5d82edffd9.jpg", is_public: true},
+  {user_id: 1, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 1, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 1, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 1, title: "Monkey", content: "I dreamed I was a monkey, swinging from the trees!", image_url: "https://i.pinimg.com/originals/f9/24/61/f924613d358446614d352d5d82edffd9.jpg", is_public: true},
+  {user_id: 1, title: "Monkey", content: "I dreamed I was a monkey, swinging from the trees!", image_url: "https://i.pinimg.com/originals/f9/24/61/f924613d358446614d352d5d82edffd9.jpg", is_public: true},
+  {user_id: 1, title: "lions eating cake", content: "There were talking lions and they were eating cake", image_url: "http://i.imgur.com/zbXidCL.jpg", is_public: true},
+  {user_id: 1, title: "Mules on a ship", content: "there were mules on a ship eating popcorn", image_url: "", is_public: true},
+  {user_id: 1, title: "Kitten was laying", content: "Kitten was laying on the warm computer charger. Then he sneezed.", image_url: "https://mypetandi.bayer.com/sites/g/files/kmftyc426/files/styles/paragraph_image/public/2018-03/kitten_rescue_00821_4.jpg?itok=pbvTgpU5", is_public: true},
+  {user_id: 1, title: "can't find keys", content: "couldn't find my keys and it made me late for work.", image_url: "https://cdn.shopify.com/s/files/1/0624/1921/products/Keys_50596a6f-e305-4fd0-b434-3d78647c3825.jpg?v=1495936865", is_public: true},
+  {user_id: 1, title: "monkey ate", content: "he ate a banana", image_url: "", is_public: true},
+  {user_id: 1, title: "testing", content: "it takes forever", image_url: "http://i.imgur.com/zbXidCL.jpg", is_public: true},
+  {user_id: 1, title: "i'm begging", content: "you to work", image_url: "https://mypetandi.bayer.com/sites/g/files/kmftyc426/files/styles/paragraph_image/public/2018-03/kitten_rescue_00821_4.jpg?itok=pbvTgpU5", is_public: true},
+  {user_id: 1, title: "and right", content: "rawr", image_url: "https://cdn.shopify.com/s/files/1/0624/1921/products/Keys_50596a6f-e305-4fd0-b434-3d78647c3825.jpg?v=1495936865", is_public: true},
+  {user_id: 6, title: "Skating with Auntie J", content: "I was skateboarding with Aunt Jemima! She was killin' it. ", image_url: "https://i.udemycdn.com/course/750x422/124798_5f7d_10.jpg", is_public: true},
+  {user_id: 1, title: "Skating with Auntie J", content: "I was skateboarding with Aunt Jemima! She was killin' it. ", image_url: "https://i.udemycdn.com/course/750x422/124798_5f7d_10.jpg", is_public: true},
+  {user_id: 1, title: "Skating with Auntie J", content: "I was skateboarding with Aunt Jemima! She was killin' it. ", image_url: "https://i.udemycdn.com/course/750x422/124798_5f7d_10.jpg", is_public: true},
+  {user_id: 7, title: "Lion eating a computer", content: "A lion was munching on my computer while laying on top of a giant cake. Why not eat the cake instead??", image_url: "http://i.imgur.com/ej8sJ.png", is_public: true},
+  {user_id: 1, title: "Kitten causing trouble", content: "My kitten was swinging from the rafters", image_url: "", is_public: true},
+  {user_id: 1, title: "Mouse trap", content: "I was in a giant game of mouse trap", image_url: "https://i.ytimg.com/vi/t-TZRDvBjyc/maxresdefault.jpg", is_public: true},
+  {user_id: 1, title: "monkey eating", content: "monkeys and mules were eating a pancake", image_url: "https://mypetandi.bayer.com/sites/g/files/kmftyc426/files/styles/paragraph_image/public/2018-03/kitten_rescue_00821_4.jpg?itok=pbvTgpU5", is_public: true},
+  {user_id: 1, title: "Dino talent", content: "A volcano erupted, and with it came a t-rex wearing blazing gold skis, skiing down the lava.", image_url: "https://i.ytimg.com/vi/1vMBqDt0s0I/hqdefault.jpg", is_public: true},
+  {user_id: 9, title: "Eating an apple", content: "I was eating an apple and peanut butter on a bridge, overlooking a waterfall.", image_url: "https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/21/83/90/picZLz4xF.jpg", is_public: true},
+  {user_id: 8, title: "Went to Japan", content: "I went to Japan on a massive cruise ship!", image_url: "https://rccl-h.assetsadobe.com/is/image/content/dam/royal/content/fleet-landing/harmony-exterior-back-aerial-day-sailing-ship.JPG?$750x400$", is_public: true},
+  {user_id: 8, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 7, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 4, title: "fjords", content: "I was exploring fjords in iceland, they were majestic. There were waterfalls all over.", image_url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/37/21/7d/shutterstock-309014675.jpg", is_public: nil},
+  {user_id: 4, title: "cow spa", content: "aoihboabhaoh", image_url: "abhoaehoh", is_public: true},
+  {user_id: 4, title: "", content: "", image_url: "", is_public: nil},
+  {user_id: 4, title: "", content: "", image_url: "", is_public: nil},
+  {user_id: 4, title: "burger snake", content: "oiahoawjgeoah", image_url: "gaoihubiea", is_public: true},
+  {user_id: 3, title: "chased by killer dolphins", content: "i was chased! they lost.", image_url: "https://img.huffingtonpost.com/asset/5d0503742400005117924fdf.jpeg?cache=j9psni4qsj&ops=1910_1000", is_public: true}
+])
+Tag.create!([
+  {dream_id: 16, name: "1"},
+  {dream_id: 16, name: "2"},
+  {dream_id: 16, name: "3"},
+  {dream_id: 19, name: "dolphinsdoingtricks"},
+  {dream_id: 19, name: "sailing"},
+  {dream_id: 19, name: "owl"},
+  {dream_id: 23, name: "fjords"},
+  {dream_id: 2, name: "chili"},
+  {dream_id: 2, name: "jalapenos"},
+  {dream_id: 2, name: "sourCream"},
+  {dream_id: 2, name: "HarryCarays"},
+  {dream_id: 3, name: "bicycle"},
+  {dream_id: 3, name: "bunny"},
+  {dream_id: 3, name: "churros"},
+  {dream_id: 3, name: "free"},
+  {dream_id: 23, name: "iceland"},
+  {dream_id: 23, name: "waterfalls"},
+  {dream_id: 27, name: "popcorn"},
+  {dream_id: 27, name: "mule"},
+  {dream_id: 27, name: "ship"},
+  {dream_id: 12, name: "rainbows"},
+  {dream_id: 12, name: "upsideDownRainbows"},
+  {dream_id: 12, name: "upsideDown"},
+  {dream_id: 28, name: "kitten"},
+  {dream_id: 28, name: "computer"},
+  {dream_id: 28, name: "charge"},
+  {dream_id: 29, name: "cant"},
+  {dream_id: 29, name: "find"},
+  {dream_id: 29, name: "keys"},
+  {dream_id: 14, name: "lockedOut"},
+  {dream_id: 14, name: "car"},
+  {dream_id: 14, name: "iceland"},
+  {dream_id: 30, name: "monkey"},
+  {dream_id: 30, name: "eating"},
+  {dream_id: 30, name: "bananas"},
+  {dream_id: 31, name: "ugh"},
+  {dream_id: 31, name: "i "},
+  {dream_id: 31, name: "hate"},
+  {dream_id: 32, name: "please"},
+  {dream_id: 32, name: "work"},
+  {dream_id: 32, name: "ok"},
+  {dream_id: 33, name: "changing"},
+  {dream_id: 33, name: "things"},
+  {dream_id: 33, name: "left"},
+  {dream_id: 13, name: "chased"},
+  {dream_id: 13, name: "penguins"},
+  {dream_id: 13, name: "angry"},
+  {dream_id: 34, name: "skateboarding"},
+  {dream_id: 34, name: "chicago"},
+  {dream_id: 34, name: "auntjemima"},
+  {dream_id: 4, name: "trampoline"},
+  {dream_id: 4, name: "keyboard"},
+  {dream_id: 4, name: "invention"},
+  {dream_id: 35, name: "skateboarding"},
+  {dream_id: 35, name: "chicago"},
+  {dream_id: 35, name: "auntjemima"},
+  {dream_id: 15, name: "berlin"},
+  {dream_id: 15, name: "son"},
+  {dream_id: 15, name: "farFarAway"},
+  {dream_id: 7, name: "berlin"},
+  {dream_id: 7, name: "son"},
+  {dream_id: 7, name: "farFarAway"},
+  {dream_id: 2, name: "berlin"},
+  {dream_id: 2, name: "son"},
+  {dream_id: 2, name: "farFarAway"},
+  {dream_id: 2, name: "chillyWilly"},
+  {dream_id: 2, name: "terrible"},
+  {dream_id: 2, name: "fails"},
+  {dream_id: 36, name: "skateboarding"},
+  {dream_id: 36, name: "chicago"},
+  {dream_id: 36, name: "auntjemima"},
+  {dream_id: 1, name: "experiment"},
+  {dream_id: 1, name: "wildlife"},
+  {dream_id: 1, name: "tacos"},
+  {dream_id: 1, name: "test"},
+  {dream_id: 1, name: "test2"},
+  {dream_id: 1, name: "tacos2"},
+  {dream_id: 1, name: "test"},
+  {dream_id: 1, name: "test2"},
+  {dream_id: 1, name: "tacos2"},
+  {dream_id: 37, name: "lion"},
+  {dream_id: 37, name: "computer"},
+  {dream_id: 37, name: "cake"},
+  {dream_id: 38, name: "kitten"},
+  {dream_id: 38, name: "swinging"},
+  {dream_id: 38, name: "cable"},
+  {dream_id: 5, name: "try"},
+  {dream_id: 5, name: "again"},
+  {dream_id: 5, name: "dude"},
+  {dream_id: 39, name: "mouse"},
+  {dream_id: 39, name: "trap"},
+  {dream_id: 39, name: "giant"},
+  {dream_id: 17, name: "dolphin"},
+  {dream_id: 17, name: "chase"},
+  {dream_id: 17, name: "killer"},
+  {dream_id: 40, name: "monkey"},
+  {dream_id: 40, name: "mule"},
+  {dream_id: 40, name: "pancake"},
+  {dream_id: 41, name: "dinosaur"},
+  {dream_id: 41, name: "skiing"},
+  {dream_id: 41, name: "volcano"},
+  {dream_id: 41, name: "apple"},
+  {dream_id: 41, name: "peanut butter"},
+  {dream_id: 41, name: "bridge"},
+  {dream_id: 42, name: "travel"},
+  {dream_id: 42, name: "japan"},
+  {dream_id: 42, name: "boat"},
+  {dream_id: 46, name: "bananas"},
+  {dream_id: 46, name: "monkey"},
+  {dream_id: 46, name: "trees"},
+  {dream_id: 46, name: "elephants"},
+  {dream_id: 46, name: "wolves"},
+  {dream_id: 37, name: "mango"},
+  {dream_id: 28, name: "mango"},
+  {dream_id: 25, name: "papaya"},
+  {dream_id: 25, name: "snake"},
+  {dream_id: 25, name: "burger"}
+])
