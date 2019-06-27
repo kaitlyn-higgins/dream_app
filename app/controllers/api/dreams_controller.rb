@@ -23,7 +23,8 @@ class Api::DreamsController < ApplicationController
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
       render 'show.json.jbuilder'
-    else render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
+    else
+      render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
     end
   end
 
@@ -45,15 +46,18 @@ class Api::DreamsController < ApplicationController
       @dream.tags.destroy_all
 
       if @dream.save
-        @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1].downcase)
-        @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2].downcase)
-        @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3].downcase)
-        if @tag1.save && @tag2.save && @tag3.save
-          render 'show.json.jbuilder'
-        else 
-          render json: {errors: @dream.errors.full_messages}, status: :unprocessable_entity
+        params[:tag_names].each do |tag|
+          Tag.create(dream_id: @dream.id, name: tag)
         end
+        # @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1].downcase)
+        # @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2].downcase)
+        # @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3].downcase)
+        # if @tag1.save && @tag2.save && @tag3.save
+        render 'show.json.jbuilder'
+      else 
+        render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
       end
+
     end
     
 
