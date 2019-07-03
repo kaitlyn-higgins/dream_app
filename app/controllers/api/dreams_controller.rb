@@ -24,7 +24,7 @@ class Api::DreamsController < ApplicationController
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])
       render 'show.json.jbuilder'
     else
-      render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
+      render json: {errors: @dream.errors.full_messages}, status: 422
     end
   end
 
@@ -55,7 +55,7 @@ class Api::DreamsController < ApplicationController
         # if @tag1.save && @tag2.save && @tag3.save
         render 'show.json.jbuilder'
       else 
-        render json: {errors: @dream.errors.full_messages}, status: unprocessable_entity
+        render json: {errors: @dream.errors.full_messages}, status: 422
       end
 
     end
