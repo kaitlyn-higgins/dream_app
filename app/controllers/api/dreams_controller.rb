@@ -17,7 +17,7 @@ class Api::DreamsController < ApplicationController
       )
     if @dream.save
       params[:tag_names].each do |tag|
-        Tag.create(dream_id: @dream.id, name: tag)
+        Tag.create(dream_id: @dream.id, name: tag.downcase)
       end
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
@@ -47,7 +47,7 @@ class Api::DreamsController < ApplicationController
 
       if @dream.save
         params[:tag_names].each do |tag|
-          Tag.create(dream_id: @dream.id, name: tag)
+          Tag.create(dream_id: @dream.id, name: tag.downcase)
         end
         # @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1].downcase)
         # @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2].downcase)

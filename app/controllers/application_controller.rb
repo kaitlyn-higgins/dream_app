@@ -40,7 +40,9 @@ class ApplicationController < ActionController::Base
 
     unique_tag_groups.each do |group|
       sorted_by_length = group.sort_by(&:length)
-      count[sorted_by_length[0]] = sorted_by_length.count
+      if sorted_by_length.count > 1
+        count[sorted_by_length[0]] = sorted_by_length.count
+      end
     end
 
     sorted_tag_tally = count.sort_by{|k,v| v}.reverse
