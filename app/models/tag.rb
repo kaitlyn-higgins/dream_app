@@ -6,6 +6,8 @@ class Tag < ApplicationRecord
     tags.map{ |tag| tag.dream }.uniq
   end
 
+
+
   validates :name, presence: true, length: {maximum: 25}, length: {minimum: 2}
 
 end
