@@ -48,11 +48,16 @@ class Api::DreamsController < ApplicationController
       @dream.image_url = params[:image_url] || @dream.image_url
       @dream.is_public = params[:is_public] || @dream.is_public
       @dream.tags.destroy_all
+      @dream.themes.destroy_all
 
       if @dream.save
         params[:tag_names].each do |tag|
           Tag.create(dream_id: @dream.id, name: tag.downcase)
         end
+
+        params[:theme_ids].each do |theme_id|
+          DreamTheme.create(theme_id: theme_id, dream_id: @dream.id )
+        end  
         # @tag1 = Tag.new(dream_id: @dream.id, name: params[:tag1].downcase)
         # @tag2 = Tag.new(dream_id: @dream.id, name: params[:tag2].downcase)
         # @tag3 = Tag.new(dream_id: @dream.id, name: params[:tag3].downcase)
