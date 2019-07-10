@@ -19,6 +19,10 @@ class Api::DreamsController < ApplicationController
       params[:tag_names].each do |tag|
         Tag.create(dream_id: @dream.id, name: tag.downcase)
       end
+
+      params[:theme_ids].each do |theme_id|
+        DreamTheme.create(theme_id: theme_id, dream_id: @dream.id )
+      end  
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag1])
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag2])
       # @tag = Tag.create(dream_id: @dream.id, name: params[:tag3])

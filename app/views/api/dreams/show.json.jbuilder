@@ -7,3 +7,5 @@ end
 json.tags do
   json.array! @dream.tags, partial: "api/tags/tag", as: :tag
 end
+
+json.themes @dream.themes

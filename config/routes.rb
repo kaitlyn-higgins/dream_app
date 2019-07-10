@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     get "/tags/:id" => "tags#show"
 
     post "/sessions" => "sessions#create"
+
+    get "/themes" => "themes#index"
   end
 end
