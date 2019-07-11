@@ -8,11 +8,18 @@ class Api::UsersController < ApplicationController
   end
 
   def create
+    # PRINTS THE COORDINATES TO THE SERVER LOG!
+        coordinates = Geocoder.coordinates(params[:zip_code])
+        p "===========================#{coordinates}" 
+        p Geocoder.search(params[:zip_code])
+
     @user = User.new(
       email: params[:email],
       username: params[:username],
-      zip_code: params[:zip_code],
       gender: params[:gender],
+      zip_code: params[:zip_code],
+      latitude: coordinates[0],
+      longitude: coordinates[1],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
@@ -25,11 +32,17 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    coordinates = Geocoder.coordinates(params[:zip_code])
+    p "===========================#{coordinates}" 
+    p Geocoder.search(params[:zip_code])
+    
     @user = User.find(current_user.id)
     @user.email = params[:email] || @user.email
     @user.username = params[:username] || @user.username
     @user.zip_code = params[:zip_code] || @user.zip_code
     @user.gender = params[:gender] || @user.gender
+    @user.latitude = coordinates[0] || @user.latitude
+    @user.longitude = coordinates[1] || @user.longitude
     if params[:password]
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
