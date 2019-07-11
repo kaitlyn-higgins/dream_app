@@ -57,31 +57,33 @@ class ApplicationController < ActionController::Base
   end
   helper_method :tag_tally
 
-end
+  def theme_tally
+    dreams = Dream.all
 
+    all_themes = []
 
-def theme_tally
-  dreams = Dream.all
+    dreams.each do |dream|
+      all_themes << dream.themes.map{ |themes| themes.name}
+    end
 
-  all_themes = []
+    all_themes_flat = all_themes.flatten
+    counts = Hash.new(0)
+    all_themes_flat.each { |name| counts[name] += 1}
 
-  dreams.each do |dream|
-    all_themes << dream.themes.map{ |themes| themes.name}
+    sorted_count = counts.sort_by{|k,v| v}.reverse
+
+    formatted_series = []
+
+    sorted_count.each do |sub_array|
+      formatted_series << {name: sub_array[0], value: sub_array[1]}
+    end
+
+    return formatted_series
+    
   end
+  helper_method :theme_tally
 
-  all_themes_flat = all_themes.flatten
-  counts = Hash.new(0)
-  all_themes_flat.each { |name| counts[name] += 1}
 
-  sorted_count = counts.sort_by{|k,v| v}.reverse
 
-  formatted_series = []
 
-  sorted_count.each do |sub_array|
-    formatted_series << {name: sub_array[0], value: sub_array[1]}
-  end
-
-  return formatted_series
-  
 end
-helper_method :theme_tally
