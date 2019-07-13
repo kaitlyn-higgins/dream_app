@@ -83,7 +83,82 @@ class ApplicationController < ActionController::Base
   end
   helper_method :theme_tally
 
+  # geocodio = Geocodio::Client.new("API_KEY")
 
 
+
+  # def tags_lat
+  #   tags = Tag.all
+
+  #   latitude = []
+  #   longitude = []
+
+
+  #   tags.each do |tag|
+  #     longitude << tag.dream.user.map{ |user| user.longitude}
+  #     latitude << tag.dream.user.map{ |user| user.latitude}
+  #   end
+  #   # tags.each do |tag|
+  #   #   latitude << tag.dream.user.longitude
+  #   #   longitude << tag.dream.user.latitude
+  #   #   # properties.store(:description, tag.name)
+  #   # end
+
+  #   coordinates = [latitude + longitude].flatten
+
+  # end
+
+
+  def map_tags
+    # tags = Tag.where("name iLIKE ?", "%#{"adventure"}%")
+    tags = Tag.all
+
+    features = []
+    tags.each do |tag|
+      if tag.dream.user.longitude
+        features << {
+          type: "Feature",
+          properties: {
+            description: tag.name,
+            icon: "theatre"
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [tag.dream.user.longitude.to_f, tag.dream.user.latitude.to_f]
+          }
+        }
+      end
+    end
+
+    return features
+  end
+  helper_method :map_tags
+
+
+  def map_lat
+    tags = Tag.all
+
+    latitude = []
+    tags.each do |tag|
+      if tag.dream.user.latitude.to_f != 0
+        latitude << tag.dream.user.latitude.to_f
+      end
+    end  
+    return latitude
+  end
+  helper_method :map_lat
+
+  def map_long
+    tags = Tag.all
+
+    longitude = []
+    tags.each do |tag|
+      if tag.dream.user.longitude.to_f != 0
+        longitude << tag.dream.user.longitude.to_f
+      end
+    end  
+    return longitude
+  end
+  helper_method :map_long
 
 end

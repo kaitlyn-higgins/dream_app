@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+
   before_action :authenticate_user, except: [:create]
 
   def show
@@ -9,17 +10,21 @@ class Api::UsersController < ApplicationController
 
   def create
     # PRINTS THE COORDINATES TO THE SERVER LOG!
-        coordinates = Geocoder.coordinates(params[:zip_code])
+        # coordinates = Geocoder.coordinates(params[:zip_code])
+        # p Geocoder.search(params[:zip_code])
+        geocodio = Geocodio::Client.new("API_KEY")
+        coordinates = geocodio.geocode(params[:zip_code])
         p "===========================#{coordinates}" 
-        p Geocoder.search(params[:zip_code])
+
+
 
     @user = User.new(
       email: params[:email],
       username: params[:username],
       gender: params[:gender],
       zip_code: params[:zip_code],
-      latitude: coordinates[0],
-      longitude: coordinates[1],
+      latitude: coordinates[0].to_f,
+      longitude: coordinates[1].to_f,
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
@@ -35,7 +40,11 @@ class Api::UsersController < ApplicationController
     coordinates = Geocoder.coordinates(params[:zip_code])
     p "===========================#{coordinates}" 
     p Geocoder.search(params[:zip_code])
-    
+
+    # geocodio = Geocodio::Client.new("26c6244d252252d42dd72c6d548576882578cd5")
+    # coordinates = geocodio.geocode(params[:zip_code])
+    p "===========================#{coordinates}" 
+
     @user = User.find(current_user.id)
     @user.email = params[:email] || @user.email
     @user.username = params[:username] || @user.username
