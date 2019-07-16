@@ -10,11 +10,12 @@ class Api::UsersController < ApplicationController
 
   def create
     # PRINTS THE COORDINATES TO THE SERVER LOG!
-        # coordinates = Geocoder.coordinates(params[:zip_code])
-        # p Geocoder.search(params[:zip_code])
-        geocodio = Geocodio::Client.new("API_KEY")
-        coordinates = geocodio.geocode(params[:zip_code])
+        coordinates = Geocoder.coordinates(params[:zip_code])
         p "===========================#{coordinates}" 
+        p Geocoder.search(params[:zip_code])
+        # geocodio = Geocodio::Client.new("API_KEY")
+        # coordinates = geocodio.geocode(params[:zip_code])
+        # p "===========================#{coordinates}" 
 
 
 
