@@ -46,9 +46,10 @@ class Api::UsersController < ApplicationController
 
   def update
     # cloudinary
-    
-    response = Cloudinary::Uploader.upload(params[:photo])
-    cloudinary_url = response["secure_url"]
+    if params[:photo]
+      response = Cloudinary::Uploader.upload(params[:photo])
+      cloudinary_url = response["secure_url"]
+    end
 
     coordinates = Geocoder.coordinates(params[:zip_code])
     p "===========================#{coordinates}" 
