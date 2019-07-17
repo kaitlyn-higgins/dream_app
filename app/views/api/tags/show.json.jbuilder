@@ -7,6 +7,10 @@ json.associated_dreams do
       json.array! dream.tags, partial: "api/tags/tag", as: :tag
     end
 
+    json.themes do
+      json.array! dream.themes, partial: "api/themes/theme", as: :theme
+    end
+
     json.user do
      json.partial! "api/users/user", user: dream.user
     end
