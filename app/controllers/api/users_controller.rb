@@ -46,10 +46,9 @@ class Api::UsersController < ApplicationController
 
   def update
     # cloudinary
-    if params[:photo]
-      response = Cloudinary::Uploader.upload(params[:photo])
-      cloudinary_url = response["secure_url"]
-    end
+
+    
+   
 
     coordinates = Geocoder.coordinates(params[:zip_code])
     p "===========================#{coordinates}" 
@@ -66,7 +65,15 @@ class Api::UsersController < ApplicationController
     @user.gender = params[:gender] || @user.gender
     @user.latitude = coordinates[0] || @user.latitude
     @user.longitude = coordinates[1] || @user.longitude
-    @user.photo = cloudinary_url || @user.photo
+    if params[:photo]
+      response = Cloudinary::Uploader.upload(params[:photo])
+      cloudinary_url = response["secure_url"]
+      @user.photo = cloudinary_url || @user.photo
+
+    elsif params[:photo] == "undefined"
+      @user.photo = @user.photo
+    end
+
     if params[:password]
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
