@@ -1,4 +1,4 @@
-json.map_tags map_tags
+json.map_tags_list map_tags_list
 # json.map_lat map_lat
 # json.map_long map_long
 json.formatted_tag_series tag_tally

@@ -163,4 +163,41 @@ class ApplicationController < ActionController::Base
   end
   helper_method :map_long
 
+
+
+  def map_tags_list
+    # tags = Tag.where("name iLIKE ?", "%#{"adventure"}%")
+    users = User.all
+
+    features = []
+    users.each do |user|
+      tag_names = []
+      if user.longitude
+
+        user.dreams.each do |dream|
+          dream.tags.each do |tag|
+            tag_names << tag.name
+          end  
+        end
+
+        features << {
+          type: "Feature",
+          properties: {
+            description: tag_names.join(" - "),
+            icon: "theatre"
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [user.longitude.to_f, user.latitude.to_f]
+          }
+        }
+      end
+    end
+
+    return features
+  end
+  helper_method :map_tags_list
+
+
+
 end
