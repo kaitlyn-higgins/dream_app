@@ -10,8 +10,8 @@ class Api::UsersController < ApplicationController
 
   def create
     # cloudinary
-    response = Cloudinary::Uploader.upload(params[:photo])
-    cloudinary_url = response["secure_url"]
+    # response = Cloudinary::Uploader.upload(params[:photo])
+    # cloudinary_url = response["secure_url"]
 
 
 
@@ -32,7 +32,8 @@ class Api::UsersController < ApplicationController
       zip_code: params[:zip_code],
       latitude: coordinates[0].to_f,
       longitude: coordinates[1].to_f,
-      photo: cloudinary_url,
+      # photo: cloudinary_url,
+      photo: params[:photos],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
@@ -63,16 +64,17 @@ class Api::UsersController < ApplicationController
     @user.username = params[:username] || @user.username
     @user.zip_code = params[:zip_code] || @user.zip_code
     @user.gender = params[:gender] || @user.gender
+    @user.photo = params[:photo] || @user.photo
     @user.latitude = coordinates[0] || @user.latitude
     @user.longitude = coordinates[1] || @user.longitude
-    if params[:photo]
-      response = Cloudinary::Uploader.upload(params[:photo])
-      cloudinary_url = response["secure_url"]
-      @user.photo = cloudinary_url || @user.photo
+    # if params[:photo]
+    #   response = Cloudinary::Uploader.upload(params[:photo])
+    #   cloudinary_url = response["secure_url"]
+    #   @user.photo = cloudinary_url
 
-    elsif params[:photo] == "undefined"
-      @user.photo = @user.photo
-    end
+    # elsif params[:photo] == "undefined"
+    #   @user.photo = @user.photo
+    # end
 
     if params[:password]
       @user.password = params[:password]
